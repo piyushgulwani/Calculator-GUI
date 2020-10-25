@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from tkinter import *
 import time 
 import speedtest
@@ -337,3 +338,317 @@ mainmenu.add_cascade(label="About", menu=m2)
 
 calc.configure(bg = 'orange')
 calc.mainloop()
+=======
+from tkinter import *
+import time 
+
+#! Making Functional Buttons
+def click(event):
+
+    global e1_value
+    text = event.widget.cget("text")
+    if text == "=":
+
+        if e1_value.get().isdigit():
+            value = int(e1_value.get())
+        else:
+
+            try:
+                value = e1_value.get()
+                value = eval(e1_value.get())
+
+            except Exception as e:
+                print(e)
+                value = "Error"
+
+
+        e1_value.set(value)
+        calc.update()
+
+    elif text == "C":
+        e1_value.set("")
+        calc.update()
+
+    else:
+        e1_value.set(e1_value.get() + text)
+        calc.update()
+#! Making A Calculator Gui
+calc = Tk()
+
+#! Defining Default Screen Height And Width
+calc.geometry("500x400")
+
+#! Setting Title 
+calc.title('Calculator')
+
+#! Setting Icon
+calc.iconbitmap('calc.ico')
+
+#! Setting Frame 1 And Entry Widget
+f1 = Frame(calc)
+
+#! Setting Value for Entry Widget
+e1_value = StringVar()
+e1_value.set('')
+
+#! Setting Entry Widget
+e1 = Entry(f1, textvariable = e1_value, justify = RIGHT, font = "comicsansms 30 italic" )
+e1.pack(fill = X, pady = 15, padx = 20)
+f1.pack(side = TOP)
+
+#! Setting Status Bar  For Time And Date with Frame 2
+#! Setting Time 
+current_time = time.strftime('%H : %M')
+f2 = Frame(calc)
+status = StringVar()
+status.set(f"Time:    {current_time}")
+
+#! Styling For Status Bar
+status_bar = Label(f2, textvariable = status, borderwidth = 10,fg = 'cyan',bg = 'black', relief = FLAT, anchor = 'se')
+status_bar.pack(side = BOTTOM, fill = X, anchor = 'sw')
+f2.pack(side = BOTTOM, fill = X, anchor = 'sw')
+
+#! Setting Buttons in Frame 3
+f3 = Frame()
+
+#! Setting Value for Entry Widget
+b_value = StringVar()
+
+b1 = Button(f3, text = "1",pady = 13, padx = 20, activebackground = 'purple', width = 10)
+b1.pack(side = LEFT, anchor = 'ne')
+b1.bind('<Button-1>',click)
+
+b2 = Button(f3, text = "2",pady = 13, padx = 20, activebackground = 'purple', width = 10)
+b2.pack(side = LEFT, anchor = 'ne', padx = 3)
+b2.bind('<Button-1>',click)
+
+b3 = Button(f3, text = "3",pady = 13, padx = 20, activebackground = 'purple', width = 10)
+b3.pack(side = LEFT, anchor = 'ne', padx = 3)
+b3.bind('<Button-1>',click)
+
+b_1 = Button(f3, text = "+",pady = 13, activebackground = 'purple', width = 10)
+b_1.pack(side = LEFT, anchor = 'ne', padx = 3)
+b_1.bind('<Button-1>',click)
+
+f3.pack(pady = 10)
+
+#! Setting Buttons in Frame 4
+f4 = Frame()
+
+b4 = Button(f4, text = "4",pady = 13, padx = 20, activebackground = 'purple', width = 10)
+b4.pack(side = LEFT, anchor = 'ne')
+b4.bind('<Button-1>',click)
+
+b5 = Button(f4, text = "5",pady = 13, padx = 20, activebackground = 'purple', width = 10)
+b5.pack(side = LEFT, anchor = 'ne',padx = 3)
+b5.bind('<Button-1>',click)
+
+b6 = Button(f4, text = "6",pady = 13, padx = 20, activebackground = 'purple', width = 10)
+b6.pack(side = LEFT, anchor = 'ne',padx = 3)
+b6.bind('<Button-1>',click)
+
+b_2 = Button(f4, text = "-",pady = 13, activebackground = 'purple', width = 10)
+b_2.pack(side = LEFT, anchor = 'ne',padx = 3)
+b_2.bind('<Button-1>',click)
+
+f4.pack(pady = 10)
+
+#! Setting Buttons in Frame 5
+
+f5 = Frame()
+
+b7 = Button(f5, text = "7",pady = 13, padx = 20, activebackground = 'purple', width = 10)
+b7.pack(side = LEFT, anchor = 'ne')
+b7.bind('<Button-1>',click)
+
+b8 = Button(f5, text = "8",pady = 13, padx = 20, activebackground = 'purple', width = 10)
+b8.pack(side = LEFT, anchor = 'ne', padx = 3)
+b8.bind('<Button-1>',click)
+
+b9 = Button(f5, text = "9",pady = 13, padx = 20, activebackground = 'purple', width = 10)
+b9.pack(side = LEFT, anchor = 'ne', padx = 3)
+b9.bind('<Button-1>',click)
+
+b_3 = Button(f5, text = "*",pady = 13, activebackground = 'purple', width = 10)
+b_3.pack(side = LEFT, anchor = 'ne', padx = 3)
+b_3.bind('<Button-1>',click)
+
+f5.pack(pady = 10)
+
+#! Fraame 6 For Extra Buttons
+f6 = Frame()
+b_4 = Button(f6, text = "0",pady = 13, activebackground = 'purple', width = 10)
+b_4.pack(side = LEFT, anchor = 'ne', padx = 3)
+b_4.bind('<Button-1>',click)
+
+b_5 = Button(f6, text = "=",pady = 13, activebackground = 'purple', width = 10)
+b_5.pack(side = LEFT, anchor = 'nw', padx = 3)
+b_5.bind('<Button-1>',click)
+
+f6.pack()
+def bmi() : 
+
+    bmi_widget = Toplevel(calc)
+    bmi_widget.geometry('290x200')
+    bmi_widget.title('BMI')
+    p1 =  PhotoImage(file = 'bmi.png' )
+    bmi_widget.iconphoto(False,p1)
+
+    weight_frame = Frame(bmi_widget)
+    weight_value = IntVar()
+    weight_label = Label(weight_frame, text = 'Weight', font =  'comicsansms 12 italic' )
+    weight_label.pack( side = LEFT, padx = 20)
+    weight_entry = Entry(
+    weight_frame,textvariable = weight_value, font = 'comicsansms 12 italic', justify = CENTER)
+    weight_entry.pack()
+    weight_frame.pack()
+    weight_value.set(1)
+
+
+    height_frame = Frame(bmi_widget)
+    height_value = IntVar()
+    height_label = Label(height_frame, text = 'Height', font =  'comicsansms 12 italic' )
+    height_label.pack( side = LEFT, padx = 20)
+    height_entry = Entry(
+    height_frame,textvariable = height_value, font = 'comicsansms 12 italic', justify = CENTER)
+    height_entry.pack(pady = 10)
+    height_frame.pack()
+    height_value.set(1)
+
+
+
+    def calc_bmi() :
+        height = int((height_entry.get()))
+        weight = int((weight_entry.get()))
+        Label(bmi_widget, text = (f"Your BMI is {((weight * 703) / (height * height))}"), bg = 'grey', fg = 'cyan').pack(side = BOTTOM)
+        calc.update()
+    Button(bmi_widget, text = 'Calculate', command = calc_bmi).pack(anchor = 'nw')
+
+def discount() :
+
+    discount_widget = Toplevel(calc)
+    discount_widget.geometry('290x200')
+    discount_widget.title('Discount')
+    discount_widget.iconbitmap('discount.ico')
+
+    principal_frame = Frame(discount_widget)
+    principal_value = IntVar()
+    principal_label = Label(principal_frame, text = 'Amount')
+    principal_label.pack(side = LEFT, anchor = 'nw')
+    principal_entry = Entry(principal_frame,textvariable = principal_value, justify =LEFT)
+    principal_entry.pack(padx = 50)
+    principal_frame.pack()
+
+    discount_frame = Frame(discount_widget)
+    discount_value = IntVar()
+    discount_label = Label(discount_frame, text = 'Discount')
+    discount_label.pack(side = LEFT, anchor = 'nw',pady = 20)
+    discount_entry = Entry(discount_frame, textvariable = discount_value, justify = LEFT)
+    discount_entry.pack(padx = 50, pady = 20)
+    discount_frame.pack()
+
+    def calc_dis() : 
+        principal = principal_value.get()
+        dis = discount_value.get()
+        total_dis = principal / dis
+        Label(discount_widget, text = (f"You Saved {total_dis}"), bg = 'grey', fg = 'cyan').pack(side = BOTTOM, fill = X)
+    Button(discount_widget,text = 'Calculate Discount', command = calc_dis).pack(side = LEFT, anchor = 'nw')
+
+def temperature():
+
+    temperature_widget = Toplevel(calc)
+    temperature_widget.geometry('290x200')
+    temperature_widget.title('Temperature')
+    temperature_widget.iconbitmap('temp.ico')
+
+    celsius_frame = Frame(temperature_widget)
+    celsius_value = IntVar()
+    celsius_entry = Entry(celsius_frame, textvariable=celsius_value).pack(
+        side=RIGHT, anchor='ne', pady=10)
+    celsius_label = Label(
+        celsius_frame, text='Celsius *C').pack(side=LEFT, anchor='nw', pady=10,padx = 20)
+    celsius_frame.pack()
+
+    farenheit_frame = Frame(temperature_widget)
+    farenheit_value = IntVar()
+    farenheit_entry = Entry(farenheit_frame, textvariable=farenheit_value).pack(
+        side=RIGHT, anchor='ne', pady=10)
+    farenheit_label = Label(
+        farenheit_frame, text='Farenheit *F').pack(side=LEFT, anchor='nw', pady=10, padx = 14)
+    farenheit_frame.pack()
+
+    kelvin_frame = Frame(temperature_widget)
+    kelvin_value = IntVar()
+    kelvin_entry = Entry(kelvin_frame, textvariable=kelvin_value).pack(
+        side=RIGHT, anchor='ne', pady=10)
+    kelvin_label = Label(
+        kelvin_frame, text='Kelvin *K').pack(side=LEFT, anchor='nw', pady=10, padx = 20)
+    kelvin_frame.pack()
+
+    def calc_temp() : 
+        c = celsius_value.get()
+        f_temp = (c * (9/5) + 32)
+        k_temp = c + 273.15
+        farenheit_value.set(f_temp)
+        kelvin_value.set(k_temp)
+
+    Button(temperature_widget, text = "Convert", command = calc_temp).pack()
+
+def help_about () : 
+
+    help_widget  = Toplevel(calc)
+    help_widget.geometry('200x150')
+    help_widget.title('Help')
+    f1 = Frame(help_widget)
+    Label(f1 , text = 'The Functions Are :  ', fg = 'black', bg = 'cadetblue3' ).pack(anchor = 'nw')
+    Label(f1 , text = 'Number To Binary', fg = 'black', font = 'comicsans 10 italic bold' ).pack(padx = 30)
+    Label(f1 , text = 'BMI ', fg = 'black', font = 'comicsans 10 italic bold'  ).pack(padx = 30)
+    Label(f1 , text = 'Discount', fg = 'black', font = 'comicsans 10 italic bold'  ).pack(padx = 30)
+    Label(f1 , text = 'Temperature ', fg = 'black', font = 'comicsans 10 italic bold'  ).pack(padx = 30)
+    f1.pack()
+    help_widget.configure(bg = 'cadetblue3')
+
+def numToBinary() : 
+    numtb = Toplevel(calc)
+    numtb.title('Binary System')
+    numtb.geometry('190x170')
+    numtb.iconbitmap('binary.ico')
+    numtb_widget = Frame(numtb)
+    num_value = IntVar()
+    Label(numtb_widget, text = 'Number:', bg = 'yellow').pack(side = LEFT,anchor = 'nw')
+    num = Entry(numtb_widget, textvariable = num_value, justify = CENTER, font = 'comicsans 8 italic', bd = 3, bg = 'orange')
+    num.pack(side = RIGHT,anchor = 'ne')
+    numtb_widget.configure(bg = 'orange')
+    numtb.configure(bg = 'coral2')
+    numtb_widget.pack()
+
+    def convert() :
+        x1 = Frame(numtb)
+        bin_value = int(num_value.get())
+        bin_num = bin(bin_value) 
+        Label(x1, text = (f'The Binary Number is {bin_num}')).pack(side = BOTTOM, fill = X )
+        x1.pack(side = BOTTOM)
+
+    Button(numtb,text = 'Convert', command = convert).pack()
+mainmenu = Menu(calc)
+
+m1 = Menu(mainmenu, tearoff=0)
+m1.add_command(label="BMI", command=bmi)
+m1.add_separator()
+m1.add_command(label="Discount",command = discount)
+m1.add_separator()
+m1.add_command(label="Temperature",command = temperature)
+m1.add_separator()
+m1.add_command(label="Binary System",command = numToBinary)
+calc.config(menu=mainmenu)
+mainmenu.add_cascade(label="More", menu=m1)
+
+m2 = Menu(mainmenu, tearoff=0)
+m2.add_separator()
+m2.add_command(label = 'Help', command = help_about)
+m2.add_separator()
+mainmenu.add_cascade(label="About", menu=m2)
+
+calc.configure(bg = 'orange')
+calc.mainloop()
+>>>>>>> dae3950c204c30caf872dc6f0269d4e1b9846a34
