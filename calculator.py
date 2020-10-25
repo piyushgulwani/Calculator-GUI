@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from tkinter import *
 import time 
 import speedtest
