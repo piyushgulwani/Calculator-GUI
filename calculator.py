@@ -1,5 +1,6 @@
 from tkinter import *
 import time 
+import speedtest
 
 #! Making Functional Buttons
 def click(event):
@@ -41,7 +42,7 @@ calc.geometry("500x400")
 calc.title('Calculator')
 
 #! Setting Icon
-calc.iconbitmap('calc.ico')
+# calc.iconbitmap('calc.ico')
 
 #! Setting Frame 1 And Entry Widget
 f1 = Frame(calc)
@@ -264,9 +265,11 @@ def help_about () :
     Label(f1 , text = 'Number To Binary', fg = 'black', font = 'comicsans 10 italic bold' ).pack(padx = 30)
     Label(f1 , text = 'BMI ', fg = 'black', font = 'comicsans 10 italic bold'  ).pack(padx = 30)
     Label(f1 , text = 'Discount', fg = 'black', font = 'comicsans 10 italic bold'  ).pack(padx = 30)
-    Label(f1 , text = 'Temperature ', fg = 'black', font = 'comicsans 10 italic bold'  ).pack(padx = 30)
+    Label(f1 , text = 'Temperature ', fg = 'black', font = 'comicsans 10 italic bold').pack(padx = 30)
+    Label(f1 , text = 'Speed Test', fg = 'black', font = 'comicsans 10 italic bold').pack(padx = 30)
     f1.pack()
     help_widget.configure(bg = 'cadetblue3')
+
 
 def numToBinary() : 
     numtb = Toplevel(calc)
@@ -290,6 +293,27 @@ def numToBinary() :
         x1.pack(side = BOTTOM)
 
     Button(numtb,text = 'Convert', command = convert).pack()
+
+def speed_test() :
+    spt = Toplevel(calc)
+    spt.geometry('300x200')
+    spt.title('Speed Test')
+    test = speedtest.Speedtest()
+
+    def st_main(): 
+        d = (test.download() / 10 ** 6)
+        u = (test.upload() / 10 ** 6)
+    
+        l1 = Label(spt, text = f'Download Speed : {round(d, 2)} Mbps', font = 'Arial 15 italic', fg = 'coral')
+        l1.pack(padx = 10)
+
+        l2 = Label(spt, text = f'Upload Speed : {round(u, 2)} Mbps', font = 'Arial 15 italic', fg = 'coral')
+        l2.pack(padx = 20, pady = 15)
+
+    Button(spt, text = 'Test',command = st_main, activeforeground = 'cyan').pack(pady = 30 )
+    spt.configure(bg = 'black')
+
+
 mainmenu = Menu(calc)
 
 m1 = Menu(mainmenu, tearoff=0)
@@ -300,6 +324,8 @@ m1.add_separator()
 m1.add_command(label="Temperature",command = temperature)
 m1.add_separator()
 m1.add_command(label="Binary System",command = numToBinary)
+m1.add_separator()
+m1.add_command(label="Speed Test",command = speed_test)
 calc.config(menu=mainmenu)
 mainmenu.add_cascade(label="More", menu=m1)
 
