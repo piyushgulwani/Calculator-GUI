@@ -43,7 +43,9 @@ calc.geometry("500x400")
 calc.title('Calculator')
 
 #! Setting Icon
-# calc.iconbitmap('calc.ico')
+c = PhotoImage(file = 'calculator.png')
+# calc.iconphoto(False, c)
+calc.iconphoto(False, c)
 
 #! Setting Frame 1 And Entry Widget
 f1 = Frame(calc)
@@ -152,7 +154,7 @@ def bmi() :
     bmi_widget = Toplevel(calc)
     bmi_widget.geometry('290x200')
     bmi_widget.title('BMI')
-    p1 =  PhotoImage(file = 'bmi.png' )
+    p1 =  PhotoImage(file = 'bmi.png')
     bmi_widget.iconphoto(False,p1)
 
     weight_frame = Frame(bmi_widget)
@@ -299,6 +301,8 @@ def speed_test() :
     spt = Toplevel(calc)
     spt.geometry('300x200')
     spt.title('Speed Test')
+    a = PhotoImage(file = 'dashboard.png')
+    spt.iconphoto(False, a)
     test = speedtest.Speedtest()
 
     def st_main(): 
