@@ -33,6 +33,7 @@ def click(event):
     else:
         e1_value.set(e1_value.get() + text)
         calc.update()
+
 #! Making A Calculator Gui
 calc = Tk()
 
@@ -60,7 +61,6 @@ e1.pack(fill = X, pady = 15, padx = 20)
 f1.pack(side = TOP)
 
 #! Setting Status Bar  For Time And Date with Frame 2
-#! Setting Time 
 current_time = time.strftime('%H : %M')
 f2 = Frame(calc)
 status = StringVar()
@@ -77,6 +77,7 @@ f3 = Frame()
 #! Setting Value for Entry Widget
 b_value = StringVar()
 
+#! Setting Buttons in Frame 3
 b1 = Button(f3, text = "1",pady = 13, padx = 20, activebackground = 'purple', width = 10)
 b1.pack(side = LEFT, anchor = 'ne')
 b1.bind('<Button-1>',click)
@@ -138,7 +139,7 @@ b_3.bind('<Button-1>',click)
 
 f5.pack(pady = 10)
 
-#! Fraame 6 For Extra Buttons
+#! Frame 6 For Extra Buttons
 f6 = Frame()
 b_4 = Button(f6, text = "0",pady = 13, activebackground = 'purple', width = 10)
 b_4.pack(side = LEFT, anchor = 'ne', padx = 3)
@@ -149,8 +150,10 @@ b_5.pack(side = LEFT, anchor = 'nw', padx = 3)
 b_5.bind('<Button-1>',click)
 
 f6.pack()
+
 def bmi() : 
 
+#! Setting up the base of BMI
     bmi_widget = Toplevel(calc)
     bmi_widget.geometry('290x200')
     bmi_widget.title('BMI')
@@ -179,8 +182,8 @@ def bmi() :
     height_value.set(1)
 
 
-
     def calc_bmi() :
+
         height = int((height_entry.get()))
         weight = int((weight_entry.get()))
         Label(bmi_widget, text = (f"Your BMI is {((weight * 703) / (height * height))}"), bg = 'grey', fg = 'cyan').pack(side = BOTTOM)
@@ -189,6 +192,7 @@ def bmi() :
 
 def discount() :
 
+#! Setting Up the base for Discount
     discount_widget = Toplevel(calc)
     discount_widget.geometry('290x200')
     discount_widget.title('Discount')
@@ -219,6 +223,7 @@ def discount() :
 
 def temperature():
 
+#! Setting Up the base for Temperature
     temperature_widget = Toplevel(calc)
     temperature_widget.geometry('290x200')
     temperature_widget.title('Temperature')
@@ -260,6 +265,7 @@ def temperature():
 
 def help_about () : 
 
+#! Help Widget 
     help_widget  = Toplevel(calc)
     help_widget.geometry('200x150')
     help_widget.title('Help')
@@ -275,6 +281,7 @@ def help_about () :
 
 
 def numToBinary() : 
+
     numtb = Toplevel(calc)
     numtb.title('Binary System')
     numtb.geometry('190x170')
@@ -289,6 +296,7 @@ def numToBinary() :
     numtb_widget.pack()
 
     def convert() :
+
         x1 = Frame(numtb)
         bin_value = int(num_value.get())
         bin_num = bin(bin_value) 
@@ -298,6 +306,7 @@ def numToBinary() :
     Button(numtb,text = 'Convert', command = convert).pack()
 
 def speed_test() :
+#! Base For Speedtest 
     spt = Toplevel(calc)
     spt.geometry('300x200')
     spt.title('Speed Test')
@@ -318,7 +327,7 @@ def speed_test() :
     Button(spt, text = 'Test',command = st_main, activeforeground = 'cyan').pack(pady = 30 )
     spt.configure(bg = 'black')
 
-
+#! Adding Menu and Sub-Menus
 mainmenu = Menu(calc)
 
 m1 = Menu(mainmenu, tearoff=0)
