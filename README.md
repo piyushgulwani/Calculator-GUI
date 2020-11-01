@@ -2,7 +2,7 @@
 
 
 
-### :bookmark: :heavy_exclamation_mark: Important Note :no_entry_sign: Do Not Delete The .ico files :x:
+### :bookmark: :heavy_exclamation_mark: Important Note :no_entry_sign: Do Not Delete The `.ico files` and `.png files` :x:
 
 
 ### :heavy_exclamation_mark: Requirement > `tkinter module`
