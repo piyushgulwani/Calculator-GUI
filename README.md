@@ -5,8 +5,6 @@
 
 ### :heavy_exclamation_mark: Requirement > `tkinter module` `speestest`
 
-### :heavy_exclamation_mark: Requirement > `tkinter module` `speedtest`
-
 ### Install it using command `pip install speedtest-cli`
 
 ### :star:Star it if you like it :gift:
