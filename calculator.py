@@ -257,6 +257,11 @@ def temperature():
         kelvin_frame, text='Kelvin *K').pack(side=LEFT, anchor='nw', pady=10, padx = 20)
     kelvin_frame.pack()
 
+    def reset() : 
+        celsius_value.set(0)
+        farenheit_value.set(0)
+        kelvin_value.set(0)
+
     def calc_temp() : 
         c = celsius_value.get()
         f = farenheit_value.get()
@@ -281,7 +286,8 @@ def temperature():
             farenheit_value.set(k_temp)
             celsius_value.set(c_temp)
 
-    Button(temperature_widget, text = "Convert", command = calc_temp).pack()
+    Button(temperature_widget, text = "Convert", command = calc_temp).pack(side = LEFT, padx = 30)
+    Button(temperature_widget, text = "Reset", command = reset).pack(side = RIGHT, padx = 30)
 
 def help_about () : 
 
