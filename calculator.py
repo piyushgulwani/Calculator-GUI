@@ -259,11 +259,27 @@ def temperature():
 
     def calc_temp() : 
         c = celsius_value.get()
-        f_temp = (c * (9/5) + 32)
-        k_temp = c + 273.15
-        farenheit_value.set(f_temp)
-        kelvin_value.set(k_temp)
+        f = farenheit_value.get()
+        k = kelvin_value.get()
+        if(c != None and c != 0) :
+            f_temp = (c * (9/5) + 32)
+            k_temp = c + 273.15
+            farenheit_value.set(f_temp)
+            kelvin_value.set(k_temp)
+            temperature_widget.update()
+        
+        elif (f != None and f != 0) : 
+            k_temp = ((f + 459.67) * (5/9))
+            c_temp = ((f -32) * (5/9))
+            celsius_value.set(c_temp)
+            kelvin_value.set(k_temp)
+            temperature_widget.update()
 
+        elif (k != None and k != 0) : 
+            c_temp = (k - 273.15)
+            k_temp = ((k * 1.8) - (459.67))
+            farenheit_value.set(k_temp)
+            celsius_value.set(c_temp)
 
     Button(temperature_widget, text = "Convert", command = calc_temp).pack()
 
