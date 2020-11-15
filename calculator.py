@@ -56,7 +56,7 @@ e1_value = StringVar()
 e1_value.set('')
 
 #! Setting Entry Widget
-e1 = Entry(f1, textvariable = e1_value, justify = RIGHT, font = "comicsansms 30 italic" )
+e1 = Entry(f1, textvariable = e1_value, justify = RIGHT, font = "hack 24 " )
 e1.pack(fill = X, pady = 15, padx = 20)
 f1.pack(side = TOP)
 
@@ -146,6 +146,10 @@ b_4.pack(side = LEFT, anchor = 'ne', padx = 3)
 b_4.bind('<Button-1>',click)
 
 b_5 = Button(f6, text = "=",pady = 13, activebackground = 'purple', width = 10)
+b_5.pack(side = LEFT, anchor = 'nw', padx = 3)
+b_5.bind('<Button-1>',click)
+
+b_5 = Button(f6, text = "%",pady = 13, activebackground = 'purple', width = 10)
 b_5.pack(side = LEFT, anchor = 'nw', padx = 3)
 b_5.bind('<Button-1>',click)
 
