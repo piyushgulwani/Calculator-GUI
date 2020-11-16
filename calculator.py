@@ -1,4 +1,4 @@
-
+#! Importing Required Modules 
 from tkinter import *
 import time 
 import speedtest
@@ -118,7 +118,6 @@ b_2.bind('<Button-1>',click)
 f4.pack(pady = 10)
 
 #! Setting Buttons in Frame 5
-
 f5 = Frame()
 
 b7 = Button(f5, text = "7",pady = 13, padx = 20, activebackground = 'purple', width = 10)
@@ -187,16 +186,14 @@ def bmi() :
 
 
     def calc_bmi() :
-
         height = int((height_entry.get()))
         weight = int((weight_entry.get()))
         Label(bmi_widget, text = (f"Your BMI is {((weight * 703) / (height * height))}"), bg = 'grey', fg = 'cyan').pack(side = BOTTOM)
         calc.update()
     Button(bmi_widget, text = 'Calculate', command = calc_bmi).pack(anchor = 'nw')
 
-def discount() :
-
 #! Setting Up the base for Discount
+def discount() :
     discount_widget = Toplevel(calc)
     discount_widget.geometry('290x200')
     discount_widget.title('Discount')
@@ -218,6 +215,7 @@ def discount() :
     discount_entry.pack(padx = 50, pady = 20)
     discount_frame.pack()
 
+#! Making Base for Discount
     def calc_dis() : 
         principal = principal_value.get()
         dis = discount_value.get()
@@ -225,9 +223,8 @@ def discount() :
         Label(discount_widget, text = (f"You Saved {total_dis}"), bg = 'grey', fg = 'cyan').pack(side = BOTTOM, fill = X)
     Button(discount_widget,text = 'Calculate Discount', command = calc_dis).pack(side = LEFT, anchor = 'nw')
 
-def temperature():
-
 #! Setting Up the base for Temperature
+def temperature():
     temperature_widget = Toplevel(calc)
     temperature_widget.geometry('290x200')
     temperature_widget.title('Temperature')
@@ -257,15 +254,18 @@ def temperature():
         kelvin_frame, text='Kelvin *K').pack(side=LEFT, anchor='nw', pady=10, padx = 20)
     kelvin_frame.pack()
 
+#! Function for Reseting the Calc(Temperature)
     def reset() : 
         celsius_value.set(0)
         farenheit_value.set(0)
         kelvin_value.set(0)
 
+#! Setting / Getting Values for Temperature
     def calc_temp() : 
         c = celsius_value.get()
         f = farenheit_value.get()
         k = kelvin_value.get()
+
         if(c != None and c != 0) :
             f_temp = (c * (9/5) + 32)
             k_temp = c + 273.15
@@ -289,9 +289,8 @@ def temperature():
     Button(temperature_widget, text = "Convert", command = calc_temp).pack(side = LEFT, padx = 30)
     Button(temperature_widget, text = "Reset", command = reset).pack(side = RIGHT, padx = 30)
 
-def help_about () : 
-
 #! Help Widget 
+def help_about () : 
     help_widget  = Toplevel(calc)
     help_widget.geometry('200x150')
     help_widget.title('Help')
@@ -305,9 +304,8 @@ def help_about () :
     f1.pack()
     help_widget.configure(bg = 'cadetblue3')
 
-
+#! Making Base for Number to Binary Function
 def numToBinary() : 
-
     numtb = Toplevel(calc)
     numtb.title('Binary System')
     numtb.geometry('190x170')
@@ -321,8 +319,8 @@ def numToBinary() :
     numtb.configure(bg = 'coral2')
     numtb_widget.pack()
 
+#! Setting Function for Convertion
     def convert() :
-
         x1 = Frame(numtb)
         bin_value = int(num_value.get())
         bin_num = bin(bin_value) 
@@ -331,8 +329,8 @@ def numToBinary() :
 
     Button(numtb,text = 'Convert', command = convert).pack()
 
-def speed_test() :
 #! Base For Speedtest 
+def speed_test() :
     spt = Toplevel(calc)
     spt.geometry('300x200')
     spt.title('Speed Test')
@@ -340,6 +338,7 @@ def speed_test() :
     spt.iconphoto(False, a)
     test = speedtest.Speedtest()
 
+#! Testing Speed
     def st_main(): 
         d = (test.download() / 10 ** 6)
         u = (test.upload() / 10 ** 6)
@@ -355,7 +354,6 @@ def speed_test() :
 
 #! Adding Menu and Sub-Menus
 mainmenu = Menu(calc)
-
 m1 = Menu(mainmenu, tearoff=0)
 m1.add_command(label="BMI", command=bmi)
 m1.add_separator()
