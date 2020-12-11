@@ -11,7 +11,7 @@ def click(event):
     text = event.widget.cget("text")
     if text == "=":
 
-        if e1_value.get().isdigit():
+        if e1_value.get().isdigit()  :
             value = int(e1_value.get())
         else:
 
@@ -140,11 +140,15 @@ f5.pack(pady = 10)
 
 #! Frame 6 For Extra Buttons
 f6 = Frame()
-b_4 = Button(f6, text = "0",pady = 13, activebackground = 'purple', width = 10)
+b_c = Button(f6, text = "C",pady = 13,padx = 20, activebackground = 'purple', width = 10)
+b_c.pack(side = LEFT, anchor = 'ne', padx = 3)
+b_c.bind('<Button-1>',click)
+
+b_4 = Button(f6, text = "0",pady = 13,padx = 20, activebackground = 'purple', width = 10)
 b_4.pack(side = LEFT, anchor = 'ne', padx = 3)
 b_4.bind('<Button-1>',click)
 
-b_5 = Button(f6, text = "=",pady = 13, activebackground = 'purple', width = 10)
+b_5 = Button(f6, text = "=",pady = 13,padx = 20, activebackground = 'purple', width = 10)
 b_5.pack(side = LEFT, anchor = 'nw', padx = 3)
 b_5.bind('<Button-1>',click)
 
@@ -154,9 +158,9 @@ b_5.bind('<Button-1>',click)
 
 f6.pack()
 
+#! Setting up the base of BMI
 def bmi() : 
 
-#! Setting up the base of BMI
     bmi_widget = Toplevel(calc)
     bmi_widget.geometry('290x200')
     bmi_widget.title('BMI')
