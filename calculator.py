@@ -1,3 +1,4 @@
+
 #! Importing Required Modules 
 from tkinter import *
 import time 
@@ -45,7 +46,6 @@ calc.title('Calculator')
 
 #! Setting Icon
 c = PhotoImage(file = 'calculator.png')
-# calc.iconphoto(False, c)
 calc.iconphoto(False, c)
 
 #! Setting Frame 1 And Entry Widget
@@ -56,15 +56,15 @@ e1_value = StringVar()
 e1_value.set('')
 
 #! Setting Entry Widget
-e1 = Entry(f1, textvariable = e1_value, justify = RIGHT, font = "hack 24 " )
-e1.pack(fill = X, pady = 15, padx = 20)
+e1 = Entry(f1, textvariable = e1_value, justify = CENTER, font = "hack 24" , relief = SOLID)
+e1.pack(fill = X, pady = 10, padx = 45)
 f1.pack(side = TOP)
 
 #! Setting Status Bar  For Time And Date with Frame 2
 current_time = time.strftime('%H : %M')
 f2 = Frame(calc)
 status = StringVar()
-status.set(f"Time:    {current_time}")
+status.set(f"Time  ↔\t{current_time}")
 
 #! Styling For Status Bar
 status_bar = Label(f2, textvariable = status, borderwidth = 10,fg = 'cyan',bg = 'black', relief = FLAT, anchor = 'se')
