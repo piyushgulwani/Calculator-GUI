@@ -2,6 +2,7 @@
 #! Importing Required Modules 
 from tkinter import *
 import time 
+import webbrowser as wb
 import speedtest
 
 #! Making Functional Buttons
@@ -356,6 +357,30 @@ def speed_test() :
     Button(spt, text = 'Test',command = st_main, activeforeground = 'cyan').pack(pady = 30, ipadx = 30)
     spt.configure(bg = 'black')
 
+#! Reachme 
+def reachme() : 
+    rm = Toplevel(calc)
+    rm.title('Reach Me')
+    rm.geometry('300x200')
+    rm_ph = PhotoImage(file = 'reachme.png')
+    rm.iconphoto(False, rm_ph)
+    rm.configure(bg = 'grey')
+
+    def insta() : 
+        wb.open('https://www.instagram.com/____piiyush____/')
+
+    def twitter() : 
+        wb.open('https://twitter.com/gulwani_piyush')
+
+    rbf = Frame(rm)
+    rb0 = Button(rbf, text = 'Instagram', fg  = 'cyan', bg = 'black', command = insta)
+    rb0.pack(side = LEFT, ipadx = 20)
+
+    rb1 = Button(rbf, text = 'Twitter', fg  = 'cyan', bg = 'black', command = twitter)
+    rb1.pack(side = RIGHT, ipadx = 30)
+    rbf.pack(side = TOP, pady = 30)
+
+
 #! Adding Menu and Sub-Menus
 mainmenu = Menu(calc)
 m1 = Menu(mainmenu, tearoff=0)
@@ -374,6 +399,8 @@ mainmenu.add_cascade(label="More", menu=m1)
 m2 = Menu(mainmenu, tearoff=0)
 m2.add_separator()
 m2.add_command(label = 'Help', command = help_about)
+m2.add_separator()
+m2.add_command(label = 'Reach Me', command = reachme)
 m2.add_separator()
 mainmenu.add_cascade(label="About", menu=m2)
 
