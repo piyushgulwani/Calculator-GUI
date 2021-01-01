@@ -194,7 +194,7 @@ def bmi() :
         weight = int((weight_entry.get()))
         Label(bmi_widget, text = (f"Your BMI is {((weight * 703) / (height * height))}"), bg = 'grey', fg = 'cyan').pack(side = BOTTOM)
         calc.update()
-    Button(bmi_widget, text = 'Calculate', command = calc_bmi).pack(anchor = 'nw')
+    Button(bmi_widget, text = 'Calculate', command = calc_bmi).pack(anchor = 'nw', padx = 30)
 
 #! Setting Up the base for Discount
 def discount() :
@@ -353,7 +353,7 @@ def speed_test() :
         l2 = Label(spt, text = f'Upload Speed : {round(u, 2)} Mbps', font = 'Arial 15 italic', fg = 'coral')
         l2.pack(padx = 20, pady = 15)
 
-    Button(spt, text = 'Test',command = st_main, activeforeground = 'cyan').pack(pady = 30 )
+    Button(spt, text = 'Test',command = st_main, activeforeground = 'cyan').pack(pady = 30, ipadx = 30)
     spt.configure(bg = 'black')
 
 #! Adding Menu and Sub-Menus
