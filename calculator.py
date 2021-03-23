@@ -14,6 +14,7 @@ def click(event):
 
         if e1_value.get().isdigit()  :
             value = int(e1_value.get())
+
         else:
 
             try:
@@ -28,9 +29,11 @@ def click(event):
         e1_value.set(value)
         calc.update()
 
+
     elif text == "C":
         e1_value.set("")
         calc.update()
+
 
     else:
         e1_value.set(e1_value.get() + text)
@@ -39,15 +42,19 @@ def click(event):
 #! Making A Calculator Gui
 calc = Tk()
 
+
 #! Defining Default Screen Height And Width
 calc.geometry("500x400")
+
 
 #! Setting Title 
 calc.title('Calculator')
 
+
 #! Setting Icon
 c = PhotoImage(file = 'calculator.png')
 calc.iconphoto(False, c)
+
 
 #! Setting Frame 1 And Entry Widget
 f1 = Frame(calc)
@@ -56,10 +63,12 @@ f1 = Frame(calc)
 e1_value = StringVar()
 e1_value.set('')
 
+
 #! Setting Entry Widget
 e1 = Entry(f1, textvariable = e1_value, justify = CENTER, font = "hack 24" , relief = SOLID)
 e1.pack(fill = X, pady = 10, padx = 45)
 f1.pack(side = TOP)
+
 
 #! Setting Status Bar  For Time And Date with Frame 2
 current_time = time.strftime('%H : %M')
@@ -67,77 +76,98 @@ f2 = Frame(calc)
 status = StringVar()
 status.set(f"Time  ↔\t{current_time}")
 
+
 #! Styling For Status Bar
 status_bar = Label(f2, textvariable = status, borderwidth = 10,fg = 'cyan',bg = 'black', relief = FLAT, anchor = 'se')
 status_bar.pack(side = BOTTOM, fill = X, anchor = 'sw')
 f2.pack(side = BOTTOM, fill = X, anchor = 'sw')
 
+
 #! Setting Buttons in Frame 3
 f3 = Frame()
 
+
 #! Setting Value for Entry Widget
 b_value = StringVar()
+
 
 #! Setting Buttons in Frame 3
 b1 = Button(f3, text = "1",pady = 13, padx = 20, activebackground = 'purple', width = 10)
 b1.pack(side = LEFT, anchor = 'ne')
 b1.bind('<Button-1>',click)
 
+
 b2 = Button(f3, text = "2",pady = 13, padx = 20, activebackground = 'purple', width = 10)
 b2.pack(side = LEFT, anchor = 'ne', padx = 3)
 b2.bind('<Button-1>',click)
+
 
 b3 = Button(f3, text = "3",pady = 13, padx = 20, activebackground = 'purple', width = 10)
 b3.pack(side = LEFT, anchor = 'ne', padx = 3)
 b3.bind('<Button-1>',click)
 
+
 b_1 = Button(f3, text = "+",pady = 13, activebackground = 'purple', width = 10)
 b_1.pack(side = LEFT, anchor = 'ne', padx = 3)
 b_1.bind('<Button-1>',click)
 
+
 f3.pack(pady = 10)
+
 
 #! Setting Buttons in Frame 4
 f4 = Frame()
+
 
 b4 = Button(f4, text = "4",pady = 13, padx = 20, activebackground = 'purple', width = 10)
 b4.pack(side = LEFT, anchor = 'ne')
 b4.bind('<Button-1>',click)
 
+
 b5 = Button(f4, text = "5",pady = 13, padx = 20, activebackground = 'purple', width = 10)
 b5.pack(side = LEFT, anchor = 'ne',padx = 3)
 b5.bind('<Button-1>',click)
+
 
 b6 = Button(f4, text = "6",pady = 13, padx = 20, activebackground = 'purple', width = 10)
 b6.pack(side = LEFT, anchor = 'ne',padx = 3)
 b6.bind('<Button-1>',click)
 
+
 b_2 = Button(f4, text = "-",pady = 13, activebackground = 'purple', width = 10)
 b_2.pack(side = LEFT, anchor = 'ne',padx = 3)
 b_2.bind('<Button-1>',click)
 
+
 f4.pack(pady = 10)
+
 
 #! Setting Buttons in Frame 5
 f5 = Frame()
+
 
 b7 = Button(f5, text = "7",pady = 13, padx = 20, activebackground = 'purple', width = 10)
 b7.pack(side = LEFT, anchor = 'ne')
 b7.bind('<Button-1>',click)
 
+
 b8 = Button(f5, text = "8",pady = 13, padx = 20, activebackground = 'purple', width = 10)
 b8.pack(side = LEFT, anchor = 'ne', padx = 3)
 b8.bind('<Button-1>',click)
+
 
 b9 = Button(f5, text = "9",pady = 13, padx = 20, activebackground = 'purple', width = 10)
 b9.pack(side = LEFT, anchor = 'ne', padx = 3)
 b9.bind('<Button-1>',click)
 
+
 b_3 = Button(f5, text = "*",pady = 13, activebackground = 'purple', width = 10)
 b_3.pack(side = LEFT, anchor = 'ne', padx = 3)
 b_3.bind('<Button-1>',click)
 
+
 f5.pack(pady = 10)
+
 
 #! Frame 6 For Extra Buttons
 f6 = Frame()
@@ -145,28 +175,36 @@ b_c = Button(f6, text = "C",pady = 13,padx = 20, activebackground = 'purple', wi
 b_c.pack(side = LEFT, anchor = 'ne', padx = 3)
 b_c.bind('<Button-1>',click)
 
+
 b_4 = Button(f6, text = "0",pady = 13,padx = 20, activebackground = 'purple', width = 10)
 b_4.pack(side = LEFT, anchor = 'ne', padx = 3)
 b_4.bind('<Button-1>',click)
+
 
 b_5 = Button(f6, text = "=",pady = 13,padx = 20, activebackground = 'purple', width = 10)
 b_5.pack(side = LEFT, anchor = 'nw', padx = 3)
 b_5.bind('<Button-1>',click)
 
+
 b_5 = Button(f6, text = "%",pady = 13, activebackground = 'purple', width = 10)
 b_5.pack(side = LEFT, anchor = 'nw', padx = 3)
 b_5.bind('<Button-1>',click)
 
+
 f6.pack()
+
 
 #! Setting up the base of BMI
 def bmi() : 
-
+    """
+    This function takes your height and weight as values. Then parses it in another function and then gives you your BMI(Body Mass Index) 
+    """
     bmi_widget = Toplevel(calc)
     bmi_widget.geometry('290x200')
     bmi_widget.title('BMI')
     p1 =  PhotoImage(file = 'bmi.png')
     bmi_widget.iconphoto(False,p1)
+
 
     weight_frame = Frame(bmi_widget)
     weight_value = IntVar()
@@ -191,6 +229,9 @@ def bmi() :
 
 
     def calc_bmi() :
+        """
+        Parses the values of height and weight.
+        """
         height = int((height_entry.get()))
         weight = int((weight_entry.get()))
         Label(bmi_widget, text = (f"Your BMI is {((weight * 703) / (height * height))}"), bg = 'grey', fg = 'cyan').pack(side = BOTTOM)
@@ -199,6 +240,9 @@ def bmi() :
 
 #! Setting Up the base for Discount
 def discount() :
+    """
+    This Function takes the amount of the thing you want to calculate the discount on and then the discount applie on it and then the another function parses it and calculates how much you saved on it. 
+    """
     discount_widget = Toplevel(calc)
     discount_widget.geometry('290x200')
     discount_widget.title('Discount')
@@ -222,6 +266,9 @@ def discount() :
 
 #! Making Base for Discount
     def calc_dis() : 
+        '''
+        Parses the value of discount and amount applied on the thing.
+        '''
         principal = principal_value.get()
         dis = discount_value.get()
         total_dis = principal / dis
@@ -230,10 +277,15 @@ def discount() :
 
 #! Setting Up the base for Temperature
 def temperature():
+    """
+    This function takes the value of any one parameter and converts it to another. 
+    """    
+
     temperature_widget = Toplevel(calc)
     temperature_widget.geometry('290x200')
     temperature_widget.title('Temperature')
     temperature_widget.iconbitmap('temp.ico')
+
 
     celsius_frame = Frame(temperature_widget)
     celsius_value = IntVar()
@@ -243,6 +295,7 @@ def temperature():
         celsius_frame, text='Celsius *C').pack(side=LEFT, anchor='nw', pady=10,padx = 20)
     celsius_frame.pack()
 
+
     farenheit_frame = Frame(temperature_widget)
     farenheit_value = IntVar()
     farenheit_entry = Entry(farenheit_frame, textvariable=farenheit_value).pack(
@@ -250,6 +303,7 @@ def temperature():
     farenheit_label = Label(
         farenheit_frame, text='Farenheit *F').pack(side=LEFT, anchor='nw', pady=10, padx = 14)
     farenheit_frame.pack()
+
 
     kelvin_frame = Frame(temperature_widget)
     kelvin_value = IntVar()
@@ -259,17 +313,30 @@ def temperature():
         kelvin_frame, text='Kelvin *K').pack(side=LEFT, anchor='nw', pady=10, padx = 20)
     kelvin_frame.pack()
 
+
 #! Function for Reseting the Calc(Temperature)
     def reset() : 
+
+        """
+        Resets the parameter.
+        """        
+
         celsius_value.set(0)
         farenheit_value.set(0)
         kelvin_value.set(0)
 
+
 #! Setting / Getting Values for Temperature
     def calc_temp() : 
+
+        """
+        Fetches the value of parameters and accordingly converts the values.
+        """        
+
         c = celsius_value.get()
         f = farenheit_value.get()
         k = kelvin_value.get()
+
 
         if(c != None and c != 0) :
             f_temp = (c * (9/5) + 32)
@@ -277,7 +344,8 @@ def temperature():
             farenheit_value.set(f_temp)
             kelvin_value.set(k_temp)
             temperature_widget.update()
-        
+
+
         elif (f != None and f != 0) : 
             k_temp = ((f + 459.67) * (5/9))
             c_temp = ((f -32) * (5/9))
@@ -285,17 +353,21 @@ def temperature():
             kelvin_value.set(k_temp)
             temperature_widget.update()
 
+
         elif (k != None and k != 0) : 
             c_temp = (k - 273.15)
             k_temp = ((k * 1.8) - (459.67))
             farenheit_value.set(k_temp)
             celsius_value.set(c_temp)
 
+
     Button(temperature_widget, text = "Convert", command = calc_temp).pack(side = LEFT, padx = 30)
     Button(temperature_widget, text = "Reset", command = reset).pack(side = RIGHT, padx = 30)
 
+
 #! Help Widget 
 def help_about () : 
+
     help_widget  = Toplevel(calc)
     help_widget.geometry('200x150')
     help_widget.title('Help')
@@ -309,8 +381,10 @@ def help_about () :
     f1.pack()
     help_widget.configure(bg = 'cadetblue3')
 
+
 #! Making Base for Number to Binary Function
 def numToBinary() : 
+
     numtb = Toplevel(calc)
     numtb.title('Binary System')
     numtb.geometry('190x170')
@@ -324,6 +398,7 @@ def numToBinary() :
     numtb.configure(bg = 'coral2')
     numtb_widget.pack()
 
+
 #! Setting Function for Convertion
     def convert() :
         x1 = Frame(numtb)
@@ -334,6 +409,7 @@ def numToBinary() :
 
     Button(numtb,text = 'Convert', command = convert).pack()
 
+
 #! Base For Speedtest 
 def speed_test() :
     spt = Toplevel(calc)
@@ -342,6 +418,7 @@ def speed_test() :
     a = PhotoImage(file = 'dashboard.png')
     spt.iconphoto(False, a)
     test = speedtest.Speedtest()
+
 
 #! Testing Speed
     def st_main(): 
@@ -357,8 +434,10 @@ def speed_test() :
     Button(spt, text = 'Test',command = st_main, activeforeground = 'cyan').pack(pady = 30, ipadx = 30)
     spt.configure(bg = 'black')
 
+
 #! Reachme 
 def reachme() : 
+
     rm = Toplevel(calc)
     rm.title('Reach Me')
     rm.geometry('300x200')
