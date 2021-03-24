@@ -4,6 +4,7 @@ from tkinter import *
 import time 
 import webbrowser as wb
 import speedtest
+import datetime
 
 #! Making Functional Buttons
 def click(event):
@@ -434,6 +435,15 @@ def speed_test() :
     Button(spt, text = 'Test',command = st_main, activeforeground = 'cyan').pack(pady = 30, ipadx = 30)
     spt.configure(bg = 'black')
 
+def age_calc() : 
+    date = datetime.datetime.now()
+    agecalc = Toplevel(calc)
+    agecalc.title('Age Calculator')
+    agecalc.geometry('500x300')
+    agecalc_img = PhotoImage(file = '')
+    agecalc.iconphoto(False, agecalc_img)
+    agecalc.configure(bg = 'False')
+
 
 #! Reachme 
 def reachme() : 
@@ -465,13 +475,15 @@ mainmenu = Menu(calc)
 m1 = Menu(mainmenu, tearoff=0)
 m1.add_command(label="BMI", command=bmi)
 m1.add_separator()
-m1.add_command(label="Discount",command = discount)
+m1.add_command(label="Discount", command = discount)
 m1.add_separator()
-m1.add_command(label="Temperature",command = temperature)
+m1.add_command(label="Temperature", command = temperature)
 m1.add_separator()
-m1.add_command(label="Binary System",command = numToBinary)
+m1.add_command(label="Binary System", command = numToBinary)
 m1.add_separator()
-m1.add_command(label="Speed Test",command = speed_test)
+m1.add_command(label="Speed Test", command = speed_test)
+m1.add_separator()
+m1.add_command(label="Age Calc", command = age_calc)
 calc.config(menu=mainmenu)
 mainmenu.add_cascade(label="More", menu=m1)
 
