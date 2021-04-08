@@ -4,8 +4,8 @@ from tkinter import *
 import time 
 import webbrowser as wb
 import speedtest
-import datetime
-from tkcalendar import Calendar
+from datetime  import datetime
+from tkcalendar import Calendar, DateEntry
 
 
 #! Making Functional Buttons
@@ -439,46 +439,50 @@ def speed_test() :
 
 def age_calc() : 
     
-    date = datetime.datetime.now()
+    class EndDate(object) :
+        def NumberOfDays(self, y, m):
+            leap = 0
+            if y% 400 == 0:
+                leap = 1
+            elif y % 100 == 0:
+                leap = 0
+            elif y% 4 == 0:
+                leap = 1
+            if m==2:
+                return 28 + leap
+            list = [1,3,5,7,8,10,12]
+            if m in list:
+                return 31
+            return 30
+
+    
     agecalc = Toplevel(calc)
     agecalc.title('Age Calculator')
     agecalc.geometry('500x300')
     agecalc_img = PhotoImage(file = 'calendar.png')
     agecalc.iconphoto(False, agecalc_img)
     
-    class Date :
-        def __init__(self, d, m, y):
-                self.d = d
-                self.m = m
-                self.y = y
-            
-    monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    f7 = Frame(agecalc)
     
-    def countLeapYears(d):
+    Label(f7, text = "Day", font = 'Arial 10').pack(ipadx = 30, side = LEFT)
+    Label(f7, text = "Month", font = 'Arial 10').pack(ipadx = 50, side = LEFT)
+    Label(f7, text = "Year", font = 'Arial 10').pack(ipadx = 30, side = RIGHT)
 
-        years = d.y
+    f7.pack(side = TOP, pady = 50)
 
-        if (d.m <= 2):
-            years -= 1
+    f8 =  Frame(agecalc)
+    
+    var1 = IntVar()
+    year, month = datetime.year, datetime.month
+    
+    obj = EndDate()
+    endDate = obj.NumberOfDays(year, month)
+    
 
-        return int(years / 4) - int(years / 100) + int(years / 400)
+    month_drop = OptionMenu(f8, var1, endDate).pack()
 
-    def difference(date1, date2) : 
-        n1 = date1.y * 365 + date1.d
-        
-        for i in range(0, date1.m - 1) :
-            n1  += monthDays[i]
+    f8.pack(side = BOTTOM)
 
-        n1 += countLeapYears(date1)
-
-        n2 = date2.y * 365 + date2.d
-        
-        for i in range(0, date2.m -  1) : 
-            n2 +=  monthDays[i]
-        
-        n2 += countLeapYears(date2)
-
-        return (n2 -n1)
 
 
 #! Reachme 
